@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://code.google.com/p/kyou/StyleSpecification" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://code.google.com/p/kyou/StyleSpecification">
+
+
+	<complexType name="StyleItem">
+		<sequence>
+			<element name="format" type="string" maxOccurs="1"				minOccurs="1">
+			</element>
+			<element name="param" type="string" maxOccurs="unbounded"
+				minOccurs="0">
+			</element>
+		</sequence>
+		<attribute name="target" type="string"></attribute>
+	</complexType>
+
+	<complexType name="Config">
+		<sequence>
+			<element name="charset" type="string" maxOccurs="1"
+				minOccurs="1">
+				<annotation>
+					<documentation></documentation>
+				</annotation>
+			</element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="StyleSpecification">
+		<sequence>
+			<element name="config" type="tns:Config" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="style" type="tns:StyleItem"
+				maxOccurs="unbounded" minOccurs="1">
+			</element>
+			<element name="script" type="tns:Script"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+		</sequence>
+		<attribute name="version">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="1.0"></enumeration>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+
+	<complexType name="Script">
+		<sequence>
+			<element name="import" type="string" maxOccurs="unbounded"
+				minOccurs="0">
+			</element>
+			<element name="code" type="string" maxOccurs="1"
+				minOccurs="1">
+			</element>
+		</sequence>
+		<attribute name="name" type="string"></attribute>
+	</complexType>
+
+	<element name="spec" type="tns:StyleSpecification"></element>
+
+
+
+</schema>
